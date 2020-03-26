@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 
 import re
-from collections import Counter
 import sys
 import json
 
 # --------------------------------------------------------------#
 # variables
+
 EPSILON = 0.01
 
 # --------------------------------------------------------------#
 # functions
+
 # --------------------------------#
 # parsing informations
 
@@ -105,6 +106,7 @@ def calculate_new_z_cords_roof(new_roof_heights, z_max_body, z_max_roof):
 
 
 def load_obj(filename):
+    """function created by https://github.com/xtompok"""
     header = []
     vertices = []
     objects = {}
@@ -155,6 +157,7 @@ def load_obj(filename):
 
 
 def change_height(obj, vertices, old, new):
+    """function created by https://github.com/xtompok"""
     for f in obj:
         for vidx in f:
             if abs(vertices[vidx - 1][2] - old) < EPSILON:
@@ -163,6 +166,7 @@ def change_height(obj, vertices, old, new):
 
 
 def change_height_footprints(obj, vertices, old):
+    """function created by https://github.com/xtompok"""
     for f in obj:
         for vidx in f:
             if abs(vertices[vidx - 1][2] - old) < EPSILON:
@@ -171,6 +175,7 @@ def change_height_footprints(obj, vertices, old):
 
 
 def modify_objects(objects, vertices, fdict, tdict):
+    """function created by https://github.com/xtompok"""
     for (obj_id, old_height) in fdict.items():
         new_height = tdict[obj_id]
         if old_height == 0 or new_height == 0:
@@ -183,6 +188,7 @@ def modify_objects(objects, vertices, fdict, tdict):
 
 
 def modify_objects_footprints(objects, vertices, fdict):
+    """function inspired by https://github.com/xtompok"""
     for (obj_id, old_height) in fdict.items():
         # new_height = tdict[obj_id]
         if old_height == 0:
@@ -195,6 +201,7 @@ def modify_objects_footprints(objects, vertices, fdict):
 
 
 def save_obj(header, vertices, objects, filename,centers):
+    """function created by https://github.com/xtompok"""
     with open(filename, "w", encoding="utf-8") as f:
         for l in header:
             f.write(l)
