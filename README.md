@@ -1,6 +1,6 @@
 # Visualization of optimization
 
-Third practical part (3/3) of Master's thesis: Generalization of 3D spatial data models (2020).
+Third practical part (3/3) of Master's thesis: Generalization of LOD2 building models using the aggregation method (2020).
 
 Script serves for visualization of solved aggregation buildings optimization problem. 
 
